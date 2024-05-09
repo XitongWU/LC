@@ -18,9 +18,9 @@ public:
         n = n*2;
         DFS(1, n, cur_res, 1);
 
-        // for (int i=0; i<res_vec.size(); i++) {
-        //     cout << res_vec[i] << endl;
-        // }
+        for (int i=0; i<res_vec.size(); i++) {
+            cout << res_vec[i] << endl;
+        }
         return res_vec;
     }
 
@@ -53,7 +53,7 @@ public:
 
 int main(){
     Solution sol;
-    int n = 3;
+    int n = 8;
     sol.generateParenthesis(n);
     return 0;
 }

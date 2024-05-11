@@ -1,12 +1,13 @@
 class Solution:
     def threeSum(self, nums):
-        if len(nums)<3 or len(nums)>3000:
-            return []
-        for i in range(len(nums)):
-            if nums[i] < -10**5 or nums[i] > 10**5:
-                return []
+        # if len(nums)<3 or len(nums)>3000:
+        #     return []
+        # for i in range(len(nums)):
+        #     if nums[i] < -10**5 or nums[i] > 10**5:
+        #         return []
 
         tups_lst = []
+        nums = sorted(nums)
 
         for i in range(len(nums)):
             for j in range(i+1,len(nums)):

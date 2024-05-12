@@ -1,28 +1,31 @@
 class Solution:
-    def threeSum(self, nums):
-        # if len(nums)<3 or len(nums)>3000:
-        #     return []
-        # for i in range(len(nums)):
-        #     if nums[i] < -10**5 or nums[i] > 10**5:
-        #         return []
-
-        tups_lst = []
-        nums = sorted(nums)
-
-        for i in range(len(nums)):
-            for j in range(i+1,len(nums)):
-                for k in range(j+1,len(nums)):
-                    if nums[i]+nums[j]+nums[k] == 0:
-                        onetup = [nums[i],nums[j],nums[k]]
-                        is_in = 0
-                        for m in range(len(tups_lst)):
-                            if set(tups_lst[m]) == set(onetup):
-                                is_in = 1
-                                break
-                        if not is_in:
-                            tups_lst.append(onetup)
-
-        return tups_lst
+    def threeSum(self, nums:list[int]) -> list[list[int]]:
+        res_lst:list[list[int]] = []
+        
+        nums.sort()
+        
+        for i in range(0, len(nums) - 2):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            
+            left = i + 1
+            right = len(nums) - 1
+            
+            while left < right:
+                if nums[i] + nums[left] + nums[right] == 0:
+                    res_lst.append([nums[i], nums[left], nums[right]])
+                    right -= 1
+                    left += 1
+                    while nums[left] == nums[left - 1] and left < right:
+                        left += 1
+                    while nums[right] == nums[right + 1] and left < right:
+                        right -= 1
+                elif nums[i] + nums[left] + nums[right] < 0:
+                    left += 1
+                else:
+                    right -= 1
+        
+        return res_lst
 
 
 nums = [0,0,0]

@@ -41,6 +41,28 @@ class Solution:
             return pathq.pop()
         else:
             return pathp.pop()
-            
+    
+
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+        target:int = -1
+        cur_k = 0
         
+        def getKthNum(node:TreeNode) -> bool:
+            nonlocal cur_k, target
+            if node == None:
+                return False
+            
+            if getKthNum(node.left):
+                return True
+            cur_k += 1
+            if cur_k == k:
+                target = node.val
+                return True
+            if getKthNum(node.right):
+                return True
+            
+        getKthNum(root)
+        return target    
+        
+    
         pass
